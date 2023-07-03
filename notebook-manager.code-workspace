@@ -2,7 +2,7 @@
   "folders": [
     {
       "name": "App",
-      "path": "app"
+      "path": "frontend"
     },
     {
       "name": "Supabase",
