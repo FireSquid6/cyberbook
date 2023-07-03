@@ -1,7 +1,12 @@
 {
   "folders": [
     {
+      "name": "SvelteKit App"
       "path": "app"
+    },
+    {
+      "name": "Root"
+      "path": "."
     }
   ]
 }
