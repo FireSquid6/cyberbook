@@ -1,0 +1,16 @@
+{
+  "folders": [
+    {
+      "name": "SvelteKit App",
+      "path": "app"
+    },
+    {
+      "name": "Supabase",
+      "path": "supabase"
+    },
+    {
+      "name": "project-root",
+      "path": "./"
+    }
+  ]
+}

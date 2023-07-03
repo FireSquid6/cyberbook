@@ -8,6 +8,7 @@
     "**/*.js.map": {
       "when": "$(basename)"
     },
-    "app": true
+    "app": true,
+    "supabase": true
   }
 }
