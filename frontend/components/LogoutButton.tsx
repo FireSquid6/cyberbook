@@ -1,5 +1,5 @@
 "use client";
-import { signOutFromClient } from "@/lib/sign-out-from-client";
+import { signOutFromClient } from "@/lib/client/sign-out";
 
 export default function LogoutButton() {
   return (

@@ -1,7 +1,7 @@
 import LogoutButton from "./LogoutButton";
 import { render, screen } from "@testing-library/react";
 
-jest.mock("../lib/sign-out-from-client", () => ({
+jest.mock("../lib/client/sign-out", () => ({
   signOutFromClient: jest.fn(),
 }));
 
@@ -14,7 +14,7 @@ describe("LogoutButton", () => {
     render(<LogoutButton />);
     screen.getByRole("button").click();
     expect(
-      require("../lib/sign-out-from-client").signOutFromClient
+      require("../lib/client/sign-out").signOutFromClient
     ).toHaveBeenCalled();
   });
 });
