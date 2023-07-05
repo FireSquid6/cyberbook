@@ -5,6 +5,7 @@ export default async function Header() {
     <nav>
       <Link href="/dashboard">Dashboard</Link>
       <Link href="/">Home</Link>
+      <Link href="/signin">Sign In</Link>
     </nav>
   );
 }

@@ -1,7 +1,18 @@
 import firebaseApp from "./config";
-import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  getDoc,
+  getDocs,
+  query,
+  collection,
+  where,
+} from "firebase/firestore";
 
 const db = getFirestore(firebaseApp);
+const auth = getAuth(firebaseApp);
 
 export async function addData(collection: string, id: string, data: any) {
   let result = null;
@@ -28,4 +39,19 @@ export async function getDocument(collection: string, id: string) {
   }
 
   return { result, error };
+}
+
+export async function getUserNotes() {
+  if (auth.currentUser === null) {
+    return Promise.reject("No user logged in");
+  }
+  const q = query(
+    collection(db, "notes"),
+    where("author", "==", auth.currentUser?.uid)
+  );
+  const querySnapshot = await getDocs(q);
+
+  querySnapshot.forEach((doc) => {
+    console.log(`${doc.id} => ${doc.data()}`);
+  });
 }
