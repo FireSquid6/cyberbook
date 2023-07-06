@@ -11,7 +11,7 @@ export default function PyroButton({
 }: ButtonProps) {
   return (
     <button
-      className={`bg-primary-500 p-4 rounded-full m-2 text-2xl shadow-xl ${classExtend}`}
+      className={`bg-primary-500 p-4 rounded-full m-4 text-2xl shadow-xl hover:bg-primary-400 transition-colors hover:animate-expand ${classExtend}`}
       onClick={onClick}
     >
       {text}
