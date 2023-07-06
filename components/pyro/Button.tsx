@@ -10,7 +10,10 @@ export default function PyroButton({
   classExtend = "",
 }: ButtonProps) {
   return (
-    <button className={` ${classExtend}`} onClick={onClick}>
+    <button
+      className={`bg-primary-500 p-4 rounded-full m-2 text-2xl shadow-xl ${classExtend}`}
+      onClick={onClick}
+    >
       {text}
     </button>
   );
