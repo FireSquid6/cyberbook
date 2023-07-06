@@ -16,14 +16,18 @@ export default function RouteProtector({
   enforce = "signed-in",
 }: RouteProtectorProps) {
   useEffect(() => {
+    console.log(auth.currentUser);
     const userExists = auth.currentUser !== null;
 
     if (
       (enforce === "signed-in" && !userExists) ||
       (enforce === "signed-out" && userExists)
     ) {
-      console.log("Redirecting...");
-      redirect(redirectPath);
+      try {
+        redirect(redirectPath);
+      } catch (error) {
+        console.error(error);
+      }
     }
   }, [auth.currentUser, redirectPath, enforce]);
 
