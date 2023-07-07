@@ -1,20 +1,21 @@
 "use client";
-import { addData } from "@/firebase/database";
+import { addData, getUserNotes } from "@/firebase/database";
 import randomId from "@/firebase/randomId";
 import { getAuth } from "firebase/auth";
 import firebaseApp from "@/firebase/config";
 const auth = getAuth(firebaseApp);
 
-export default function Dashboard() {
+export default async function Dashboard() {
+  const notes = await getUserNotes();
   return (
     <div>
       <h1>Dashboard</h1>
       <button
         onClick={() => {
           addData("notes", randomId(), {
-            description: "this is a note",
+            description: "this is a note 2",
             date: new Date().toISOString(),
-            notebook: "B",
+            notebook: "A",
             pageStart: 1,
             pageEnd: 3,
             owner: auth.currentUser?.uid || "",

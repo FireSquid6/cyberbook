@@ -42,14 +42,16 @@ export async function getDocument(collection: string, id: string) {
 }
 
 export async function getUserNotes() {
+  console.log("getting notes");
   if (auth.currentUser === null) {
     return Promise.reject("No user logged in");
   }
   const q = query(
     collection(db, "notes"),
-    where("author", "==", auth.currentUser?.uid)
+    where("owner", "==", auth.currentUser?.uid)
   );
   const querySnapshot = await getDocs(q);
+  console.log(querySnapshot);
 
   querySnapshot.forEach((doc) => {
     console.log(`${doc.id} => ${doc.data()}`);

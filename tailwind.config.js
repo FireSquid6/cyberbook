@@ -6,15 +6,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      keyframes: {
-        expand: {
-          "0%, 100%": { transform: "scale(1)" },
-          "60%": { transform: "scale(1.1)" },
-        },
-      },
-      animation: {
-        expand: "expand 0.6s ease-in-out 1",
-      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
