@@ -1,8 +1,8 @@
 "use client";
-import { useEffect } from "react";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { getAuth } from "firebase/auth";
 import firebaseApp from "@/firebase/config";
+import { useEffect } from "react";
 
 const auth = getAuth(firebaseApp);
 
@@ -11,25 +11,30 @@ export interface RouteProtectorProps {
   enforce: "signed-in" | "signed-out";
 }
 
-export default function RouteProtector({
+export default async function RouteProtector({
   redirectPath,
   enforce = "signed-in",
 }: RouteProtectorProps) {
+  const router = useRouter();
   useEffect(() => {
-    console.log(auth.currentUser);
-    const userExists = auth.currentUser !== null;
+    const effect = async () => {
+      await auth.updateCurrentUser(auth.currentUser);
+      const userExists = auth.currentUser !== null;
 
-    if (
-      (enforce === "signed-in" && !userExists) ||
-      (enforce === "signed-out" && userExists)
-    ) {
-      try {
-        redirect(redirectPath);
-      } catch (error) {
-        console.error(error);
+      if (
+        (enforce === "signed-in" && !userExists) ||
+        (enforce === "signed-out" && userExists)
+      ) {
+        try {
+          router.push(redirectPath);
+        } catch (error) {
+          console.error(error);
+        }
       }
-    }
-  }, [auth.currentUser, redirectPath, enforce]);
+    };
+
+    effect();
+  }, []);
 
   return <></>;
 }

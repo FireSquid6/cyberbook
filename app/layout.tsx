@@ -16,7 +16,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Header />
-        <main>{children}</main>
+        <div className="mx-4 my-2">
+          <main className="mx-auto max-w-2xl">{children}</main>
+        </div>
       </body>
     </html>
   );
