@@ -6,7 +6,6 @@ import firebaseApp from "@/firebase/config";
 const auth = getAuth(firebaseApp);
 
 export default async function Dashboard() {
-  const notes = await getUserNotes();
   return (
     <div>
       <h1>Dashboard</h1>
