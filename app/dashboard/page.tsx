@@ -1,28 +1,21 @@
 "use client";
-import { addData, getUserNotes } from "@/firebase/database";
-import randomId from "@/firebase/randomId";
+import { useState } from "react";
 import { getAuth } from "firebase/auth";
 import firebaseApp from "@/firebase/config";
+import DashboardMenu, { SELECTED_ITEM } from "@/components/DashboardMenu";
 const auth = getAuth(firebaseApp);
 
 export default async function Dashboard() {
+  const [selectedMenu, setSelectedMenu] = useState(SELECTED_ITEM.WRITE);
+
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <button
-        onClick={() => {
-          addData("notes", randomId(), {
-            description: "this is a note 2",
-            date: new Date().toISOString(),
-            notebook: "A",
-            pageStart: 1,
-            pageEnd: 3,
-            owner: auth.currentUser?.uid || "",
-          });
-        }}
-      >
-        Add a note!
-      </button>
-    </div>
+    <>
+      <div className="flex align-center justify-center">
+        <DashboardMenu
+          selectedItem={selectedMenu}
+          setSelectedItem={() => console.log("it bwoken :(")}
+        />
+      </div>
+    </>
   );
 }

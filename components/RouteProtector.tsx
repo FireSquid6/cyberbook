@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { getAuth } from "firebase/auth";
 import firebaseApp from "@/firebase/config";
 import { useEffect } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const auth = getAuth(firebaseApp);
 
@@ -16,25 +17,22 @@ export default async function RouteProtector({
   enforce = "signed-in",
 }: RouteProtectorProps) {
   const router = useRouter();
+  const [user, loading, error] = useAuthState(auth);
+
   useEffect(() => {
-    const effect = async () => {
-      await auth.updateCurrentUser(auth.currentUser);
-      const userExists = auth.currentUser !== null;
+    if (loading) return;
+    if (error) return;
 
-      if (
-        (enforce === "signed-in" && !userExists) ||
-        (enforce === "signed-out" && userExists)
-      ) {
-        try {
-          router.push(redirectPath);
-        } catch (error) {
-          console.error(error);
-        }
-      }
-    };
+    console.log(user);
 
-    effect();
-  }, []);
+    const userExists = user !== null && user !== undefined;
+    if (
+      (enforce === "signed-in" && !userExists) ||
+      (enforce === "signed-out" && userExists)
+    ) {
+      router.push(redirectPath);
+    }
+  }, [user, loading, error]);
 
   return <></>;
 }
