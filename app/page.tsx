@@ -1,9 +1,10 @@
 import RouteProtector from "@/components/RouteProtector";
+import Hero from "@/components/Hero";
 
 export default async function Index() {
   return (
     <>
-      <p>Hello world!</p>
+      <Hero />
       <RouteProtector enforce="signed-out" redirectPath="/dashboard" />
     </>
   );
