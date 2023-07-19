@@ -20,17 +20,13 @@ export default function AuthButton() {
 
   return (
     <div className="flex-none">
-      {loading || error ? (
-        <></>
-      ) : (
-        <button className="btn btn-square btn-ghost" onClick={buttonClicked}>
-          {user ? (
-            <BiLogOut className="inline-block w-5 h-5 stroke-current" />
-          ) : (
-            <BiLogIn className="inline-block w-5 h-5 stroke-current" />
-          )}
-        </button>
-      )}
+      <button className="btn btn-square btn-ghost" onClick={buttonClicked}>
+        {user && !loading && !error ? (
+          <BiLogOut className="inline-block w-5 h-5 stroke-current" />
+        ) : (
+          <BiLogIn className="inline-block w-5 h-5 stroke-current" />
+        )}
+      </button>
     </div>
   );
 }
