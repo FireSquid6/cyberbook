@@ -4,8 +4,9 @@ import { getAuth } from "firebase/auth";
 import { FormEvent, useState } from "react";
 import { doc, setDoc, getFirestore } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
-const auth = getAuth();
-const db = getFirestore();
+import firebaseApp from "@/firebase/config";
+const auth = getAuth(firebaseApp);
+const db = getFirestore(firebaseApp);
 
 export default function WriteForm() {
   const [user, loading, error] = useAuthState(auth);

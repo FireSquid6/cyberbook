@@ -1,7 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import { getAuth } from "firebase/auth";
-const auth = getAuth();
+import firebaseApp from "@/firebase/config";
+const auth = getAuth(firebaseApp);
 
 export default function AuthInfo() {
   const [userEmail, setUserEmail] = useState("");
