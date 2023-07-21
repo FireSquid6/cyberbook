@@ -19,12 +19,11 @@ export default function WriteForm() {
     if (loading || error || !user) return;
     e.preventDefault();
 
-    await setDoc(doc(db, "notes", randomId()), {
+    await setDoc(doc(db, `users/${user.uid}/notes`, randomId()), {
       date: date,
       description: description,
       index: index,
       page: page,
-      owner: user.uid,
     });
 
     console.log(description, index, page);
