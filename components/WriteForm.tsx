@@ -45,7 +45,7 @@ export default function WriteForm() {
         value={index}
         onChange={(e) => setIndex(e.target.value)}
         type="text"
-        placeholder="Index"
+        placeholder="Notebook Index"
         className="input input-bordered w-full max-w-xs"
       />
       <input
