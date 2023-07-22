@@ -11,15 +11,13 @@ export default function AuthButton() {
   const router = useRouter();
 
   const buttonClicked = () => {
-    if (user === null || user === undefined) {
-      auth.signOut();
-    }
-
+    auth.signOut();
     router.push("/signin");
   };
 
   return (
     <div className="flex-none">
+      {user && !loading && !error ? <p>Hello, {user.email}</p> : <></>}
       <button className="btn btn-square btn-ghost" onClick={buttonClicked}>
         {user && !loading && !error ? (
           <BiLogOut className="inline-block w-5 h-5 stroke-current" />
