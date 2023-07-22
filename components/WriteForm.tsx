@@ -30,7 +30,8 @@ export default function WriteForm() {
   };
 
   return (
-    <form>
+    <form className="flex flex-col align-middle justify-center bg-base-200 py-4 px-2 border-white border rounded-2xl shadow-2xl">
+      <h2 className="text-3xl text-center m-2 mt-4">Add a Note</h2>
       <input
         value={description}
         onChange={(e) => {
@@ -39,30 +40,30 @@ export default function WriteForm() {
         }}
         type="text"
         placeholder="Description"
-        className="input input-bordered w-full max-w-xs"
+        className="add-note-input"
       />
       <input
         value={index}
         onChange={(e) => setIndex(e.target.value)}
         type="text"
         placeholder="Notebook Index"
-        className="input input-bordered w-full max-w-xs"
+        className="add-note-input"
       />
       <input
         value={date}
         onChange={(e) => setDate(e.target.value)}
         type="date"
         placeholder="yyyy-mm-dd"
-        className="input input-bordered w-full max-w-xs"
+        className="add-note-input"
       />
       <input
         value={page}
-        onChange={(e) => setPage(parseInt(e.target.value))}
+        onChange={(e) => setPage(Math.max(0, parseInt(e.target.value)))}
         type="number"
         placeholder="Page"
-        className="input input-bordered w-full max-w-xs"
+        className="add-note-input"
       />
-      <button onClick={onSubmit} className="btn btn-primary">
+      <button onClick={onSubmit} className="btn btn-primary m-auto w-36 my-2">
         Submit
       </button>
     </form>
