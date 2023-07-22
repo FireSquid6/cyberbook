@@ -1,6 +1,5 @@
 import Link from "next/link";
 import AuthButton from "./AuthButton";
-import AuthInfo from "./AuthInfo";
 
 export default async function Header() {
   return (
@@ -10,7 +9,6 @@ export default async function Header() {
           Cyberbook
         </Link>
       </div>
-      <AuthInfo />
       <AuthButton />
     </header>
   );
