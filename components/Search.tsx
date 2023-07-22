@@ -26,6 +26,7 @@ export default function Search() {
           {value.docs.map((doc) => (
             <Note
               key={doc.id}
+              index={doc.data().index}
               description={doc.data().description}
               date={doc.data().date}
               page={doc.data().page}
