@@ -31,7 +31,7 @@ export default function Write() {
       page: page,
     });
 
-    console.log(description, index, page);
+    setDescription("");
   };
 
   return (
