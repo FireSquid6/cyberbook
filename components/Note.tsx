@@ -5,8 +5,7 @@ interface NoteProps {
   date: string;
   page: string;
   index: string;
-  onDelete?: (id: string) => void;
-  id?: string;
+  onDelete?: () => void;
 }
 export default function Note({
   description,
@@ -14,7 +13,6 @@ export default function Note({
   page,
   index,
   onDelete = () => {},
-  id = "",
 }: NoteProps) {
   return (
     <div className="flex flex-row justify-between p-2 bg-base-100 my-2 shadowl-lg border-white border rounded-lg transition-all">
@@ -25,7 +23,7 @@ export default function Note({
           nb. {index} | p.{page}
         </span>
         <button className="hover:text-error transition-all">
-          <FaTrash onClick={() => onDelete(id)} />
+          <FaTrash onClick={onDelete} />
         </button>
       </div>
     </div>
