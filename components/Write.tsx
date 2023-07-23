@@ -8,9 +8,14 @@ import firebaseApp from "@/firebase/config";
 const auth = getAuth(firebaseApp);
 const db = getFirestore(firebaseApp);
 
+function getCurrentDate() {
+  const date = new Date();
+  return date.toISOString().split("T")[0];
+}
+
 export default function Write() {
   const [user, loading, error] = useAuthState(auth);
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(getCurrentDate());
   const [description, setDescription] = useState("");
   const [index, setIndex] = useState("");
   const [page, setPage] = useState(1);
