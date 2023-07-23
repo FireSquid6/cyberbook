@@ -10,6 +10,10 @@ const auth = getAuth(firebaseApp);
 
 export default function Search() {
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [pageStart, setPageStart] = useState<number>(0);
+  const [pageEnd, setPageEnd] = useState<number>(0);
+  const [dateStart, setDateStart] = useState<string>("");
+  const [dateEnd, setDateEnd] = useState<string>("");
   const [value, loading, error] = useCollection(
     collection(
       getFirestore(firebaseApp),
@@ -34,10 +38,18 @@ export default function Search() {
       });
     });
 
-    const filteredNotes = search(unfilteredNotes, searchQuery);
+    const filteredNotes = search(
+      unfilteredNotes,
+      searchQuery,
+      dateStart,
+      dateEnd,
+      "",
+      pageStart,
+      pageEnd
+    );
 
     setNotes(filteredNotes);
-  }, [value, searchQuery]);
+  }, [value, searchQuery, pageStart, pageEnd, dateStart, dateEnd]);
 
   return (
     <div className="bg-base-200 p-4 my-8 rounded-lg border-white border shadow-lg">
@@ -47,8 +59,42 @@ export default function Search() {
           onChange={(e) => setSearchQuery(e.target.value)}
           type="text"
           placeholder="Description"
-          className="add-note-input"
+          className="input-default"
         />
+        <div className="flex flex-row">
+          <label className="label">Page Start</label>
+          <input
+            value={pageStart}
+            onChange={(e) =>
+              setPageStart(Math.max(0, parseInt(e.target.value)))
+            }
+            type="number"
+            className="input-default"
+          />
+          <label className="label">Page End</label>
+          <input
+            value={pageEnd}
+            onChange={(e) => setPageEnd(Math.max(0, parseInt(e.target.value)))}
+            type="number"
+            className="input-default"
+          />
+        </div>
+        <div className="flex flex-row">
+          <label className="label">Date Start</label>
+          <input
+            value={dateStart}
+            onChange={(e) => setDateStart(e.target.value)}
+            type="date"
+            className="input-default"
+          />
+          <label className="label">Date End</label>
+          <input
+            value={dateEnd}
+            onChange={(e) => setDateEnd(e.target.value)}
+            type="date"
+            className="input-default"
+          />
+        </div>
       </div>
       {error && <strong>Error: {JSON.stringify(error)}</strong>}
       {loading && <span>Notes: Loading...</span>}
