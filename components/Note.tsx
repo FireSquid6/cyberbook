@@ -17,7 +17,7 @@ export default function Note({
   id = "",
 }: NoteProps) {
   return (
-    <div className="flex flex-row justify-between p-2 bg-base-200 border-white border rounded-lg transition-all">
+    <div className="flex flex-row justify-between p-2 bg-base-100 my-2 shadowl-lg border-white border rounded-lg transition-all">
       <span className="text-gray-300">{description}</span>
       <div className="text-gray-400">
         <span className="mr-6">{date}</span>

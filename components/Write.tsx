@@ -8,7 +8,7 @@ import firebaseApp from "@/firebase/config";
 const auth = getAuth(firebaseApp);
 const db = getFirestore(firebaseApp);
 
-export default function WriteForm() {
+export default function Write() {
   const [user, loading, error] = useAuthState(auth);
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
@@ -30,7 +30,7 @@ export default function WriteForm() {
   };
 
   return (
-    <form className="flex flex-col align-middle justify-center bg-base-200 py-4 px-2 border-white border rounded-2xl shadow-2xl">
+    <form className="flex flex-col align-middle justify-center bg-base-200 py-4 my-8 px-2 border-white border rounded-2xl shadow-2xl">
       <h2 className="text-3xl text-center m-2 mt-4">Add a Note</h2>
       <input
         value={description}
