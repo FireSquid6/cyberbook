@@ -28,34 +28,41 @@ export default function SignIn() {
   };
   return (
     <div>
-      <div>
-        <h1>Sign in</h1>
-        <form onSubmit={handleForm} className="form">
-          <label htmlFor="email">
-            <p>Email</p>
-            <input
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              type="email"
-              name="email"
-              id="email"
-              placeholder="example@mail.com"
-            />
-          </label>
-          <label htmlFor="password">
-            <p>Password</p>
-            <input
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              type="password"
-              name="password"
-              id="password"
-              placeholder="password"
-            />
-          </label>
-          <button type="submit">Sign In</button>
-        </form>
-      </div>
+      <h1 className="text-3xl text-center">Sign in</h1>
+      <form
+        onSubmit={handleForm}
+        className="flex flex-col justify-center align-center"
+      >
+        <input
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          type="email"
+          name="email"
+          id="email"
+          className="input-default"
+          placeholder="example@mail.com"
+        />
+        <input
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          type="password"
+          name="password"
+          id="password"
+          className="input-default"
+          placeholder="password"
+        />
+        <button type="submit" className="btn btn-primary">
+          Sign In
+        </button>
+      </form>
+      <h5 className="text-center my-4">
+        <a
+          href="/signup"
+          className="text-secondary hover:text-secondary-focus transition-all"
+        >
+          I don't have an account
+        </a>
+      </h5>
     </div>
   );
 }
