@@ -1,12 +1,22 @@
 "use client";
 import { useEffect, useState } from "react";
-import { getFirestore, collection } from "firebase/firestore";
+import { getFirestore, collection, deleteDoc, doc } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore";
 import firebaseApp from "@/firebase/config";
 import { getAuth } from "firebase/auth";
 import Note from "@/components/Note";
 import { Note as NoteType, search } from "@/firebase/search";
 const auth = getAuth(firebaseApp);
+
+function onDelete(id: string) {
+  deleteDoc(
+    doc(
+      getFirestore(firebaseApp),
+      `users/${auth.currentUser?.uid ?? "noid"}/notes`,
+      id
+    )
+  );
+}
 
 export default function Search() {
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -107,6 +117,7 @@ export default function Search() {
               description={note.description}
               date={note.date}
               page={note.page.toString()}
+              onDelete={() => onDelete(note.id)}
             />
           ))}
         </div>
