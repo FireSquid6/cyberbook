@@ -17,7 +17,13 @@ export default function AuthButton() {
 
   return (
     <div className="flex-none">
-      {user && !loading && !error ? <p>Hello, {user.email}</p> : <></>}
+      {user && !loading && !error ? (
+        <p className="w-0 opacity-0 sm:opacity-100 transition-all sm:w-auto">
+          Hello, {user.email}
+        </p>
+      ) : (
+        <></>
+      )}
       <button className="btn btn-square btn-ghost" onClick={buttonClicked}>
         {user && !loading && !error ? (
           <BiLogOut className="inline-block w-5 h-5 stroke-current" />
