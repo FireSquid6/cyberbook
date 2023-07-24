@@ -9,3 +9,7 @@
 .input-default {
   @apply input input-bordered my-2 mx-auto w-full;
 }
+
+a {
+  @apply text-primary hover:text-primary-focus transition-all;
+}

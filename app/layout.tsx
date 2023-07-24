@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import "./globals.css";
 import { AuthContextProvider } from "@/context/AuthContext";
+import Footer from "@/components/Footer";
 
 export const metadata = {
   title: "Cyberbook",
@@ -19,6 +20,7 @@ export default function RootLayout({
         <div className="mx-4 my-2">
           <main className="mx-auto max-w-2xl">{children}</main>
         </div>
+        <Footer />
       </body>
     </html>
   );
