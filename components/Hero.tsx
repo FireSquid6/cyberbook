@@ -2,19 +2,14 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <div className="m-0 hero w-full">
-      <div className="hero-content text-center">
-        <div className="max-w-md">
-          <h1 className="text-4xl font-bold">Enhance your Notes</h1>
-          <p className="py-6">
-            Take notes with the tactility of the pen and the utility of the
-            keyboard.
-          </p>
-          <Link href="/dashboard" className="btn btn-primary">
-            Get Started
-          </Link>
-        </div>
-      </div>
+    <div className="m-0 w-full text-center">
+      <h1 className="py-6 text-3xl font-bold">
+        Take notes with the tactility of the pen and the utility of the
+        keyboard.
+      </h1>
+      <Link href="/dashboard" className="btn btn-primary">
+        Get Started
+      </Link>
     </div>
   );
 }
