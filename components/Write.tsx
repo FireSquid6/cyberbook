@@ -21,8 +21,9 @@ export default function Write() {
   const [page, setPage] = useState(1);
 
   const onSubmit = async (e: FormEvent) => {
-    if (loading || error || !user) return;
     e.preventDefault();
+    if (loading || error || !user) return;
+    if (date === "" || description === "" || index === "" || page === 0) return;
 
     await setDoc(doc(db, `users/${user.uid}/notes`, randomId()), {
       date: date,
@@ -68,7 +69,13 @@ export default function Write() {
         placeholder="Page"
         className="add-note-input"
       />
-      <button onClick={onSubmit} className="btn btn-primary m-auto w-36 my-2">
+      <button
+        onClick={onSubmit}
+        disabled={
+          date === "" || description === "" || index === "" || page === 0
+        }
+        className="btn btn-primary m-auto w-36 my-2"
+      >
         Submit
       </button>
     </form>
