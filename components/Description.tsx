@@ -1,7 +1,9 @@
 export default function Description() {
   return (
     <div className="text-center my-16">
-      <h2 className="text-xl my-4 underline">Be lazy with your organization</h2>
+      <h2 className="text-xl my-4 underline">
+        Automatically Organize Your Notes
+      </h2>
       <div className="text-center">
         <ol className="steps steps-vertical min-w-fit">
           <li className="step step-primary font-bold">Write</li>
