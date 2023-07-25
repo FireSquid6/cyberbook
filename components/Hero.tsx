@@ -10,7 +10,7 @@ export default function Hero() {
             Take notes with the tactility of the pen and the utility of the
             keyboard.
           </p>
-          <Link href="/signin" className="btn btn-primary">
+          <Link href="/dashboard" className="btn btn-primary">
             Get Started
           </Link>
         </div>
