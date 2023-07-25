@@ -18,7 +18,7 @@ export default function RootLayout({
       <body>
         <Header />
         <div className="mx-4 my-2">
-          <main className="mx-auto max-w-2xl">{children}</main>
+          <main className="mx-auto max-w-2xl min-h-[87.5vh]">{children}</main>
         </div>
         <Footer />
       </body>
