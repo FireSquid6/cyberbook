@@ -1,7 +1,17 @@
-# My Personal Notebook
-I find that it's always a constant battle between having my notebook be convienient to start writing in, while also being organized. This website hopes to solve that problem.
+# Cyberbook
+Cyberbook is an app built to help you organize your physical notebook. It allows you to write a description, date, notebook, and page number for physical notes you write down, and then search for them later. This is useful if you keep an engineering daybook.
 
-## How it works
-Every day, in a paginated physical notebook, you make a new section for that day. During that day, you write your notes in that section, disregarding topics.  
+# Contributing
+Cyberbook is built with:
+- Firebase
+- NextJS 
+- TailwindCSS
+- DaisyUI
+- Typescript
 
-At the end of the day, you use this website to save short descriptions, tags, and page numbers of all the things you have written in your notebook that day. When you later need to access these, you simply have to use the search feature to search by tag and description. This means that you can quickly find and add notes.
+1. Clone the repo
+2. Write into `.env.local` the firebase config (ask @firesquid6 on discord if you don't have it)
+3. Run `npm install` to get the dependencies
+4. Run `npm run dev` to start the development server
+
+This project is very small, so I didn't bother writing unit tests. Jest is installed, so feel free to do so if you'd like.
